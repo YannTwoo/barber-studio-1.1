@@ -1,0 +1,156 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#050505;
+color:white;
+font-family:'Orbitron',sans-serif;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+border-bottom:1px solid rgba(255,255,255,0.15);
+}
+
+.header h1{
+font-size:22px;
+font-weight:600;
+letter-spacing:2px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-size:14px;
+opacity:0.8;
+transition:0.2s;
+}
+
+nav a:hover{
+opacity:1;
+text-shadow:0 0 8px white;
+}
+
+.hero{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+}
+
+.hero h2{
+font-size:40px;
+margin-bottom:20px;
+text-shadow:0 0 12px rgba(255,255,255,0.7);
+}
+
+.hero p{
+opacity:0.8;
+margin-bottom:30px;
+}
+
+.btn{
+padding:14px 28px;
+border:1px solid white;
+color:white;
+text-decoration:none;
+font-size:14px;
+letter-spacing:1px;
+transition:0.25s;
+}
+
+.btn:hover{
+background:white;
+color:black;
+box-shadow:0 0 15px white;
+}
+
+footer{
+text-align:center;
+padding:20px;
+border-top:1px solid rgba(255,255,255,0.15);
+font-size:12px;
+opacity:0.6;
+}
+
+/* formulaire */
+
+.container{
+max-width:500px;
+margin:auto;
+padding:40px 20px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input,select{
+padding:12px;
+background:#0b0b0b;
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+font-family:'Orbitron',sans-serif;
+}
+
+button{
+padding:14px;
+border:1px solid white;
+background:transparent;
+color:white;
+font-family:'Orbitron',sans-serif;
+cursor:pointer;
+transition:0.25s;
+}
+
+button:hover{
+background:white;
+color:black;
+box-shadow:0 0 15px white;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+.table th,.table td{
+padding:12px;
+border-bottom:1px solid rgba(255,255,255,0.1);
+text-align:center;
+}
+
+/* responsive */
+
+@media(max-width:768px){
+
+.header{
+flex-direction:column;
+gap:10px;
+}
+
+nav a{
+margin:0 10px;
+}
+
+.hero h2{
+font-size:30px;
+}
+
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Réservation | AD Barber Studio Perros</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+<h1>AD Barber Studio Perros</h1>
+<nav>
+<a href="/">Accueil</a>
+<a href="/client.html">Planning</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h2>Réserver un rendez-vous</h2>
+
+<form id="reservationForm">
+
+<input type="text" id="nom" placeholder="Nom" required>
+<input type="text" id="coupe" placeholder="Nom de la coupe souhaitée" required>
+
+<select id="date" required></select>
+
+<select id="heure" required>
+<option value="">Choisir un horaire</option>
+<option value="10:30">10:30</option>
+<option value="11:00">11:00</option>
+<option value="11:30">11:30</option>
+<option value="12:00">12:00</option>
+</select>
+
+<select id="service" required>
+<option value="">Choisir un service</option>
+<option value="Standard">Standard</option>
+<option value="+ Barbe">+ Barbe</option>
+<option value="+ Finition Ciseau">+ Finition Ciseau</option>
+<option value="+ Barbe & Finition Ciseau">+ Barbe & Finition Ciseau</option>
+</select>
+
+<p id="prixService">Prix : 0€</p>
+
+<button type="submit">Réserver</button>
+
+</form>
+
+<p id="message"></p>
+
+</div>
+
+<script src="/js/reservation.js"></script>
+</body>
+</html>
