@@ -27,7 +27,7 @@
 
 <body>
 <div id="splash">
-    <div class="logo">AD BARBER STUDIO</div>
+    AD BARBER STUDIO
 </div>
 <header class="header">
 
@@ -141,16 +141,18 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 <script>
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const splash = document.getElementById("splash");
+
+    console.log("Splash chargé :", splash); // debug
 
     setTimeout(() => {
         splash.classList.add("hide");
 
         setTimeout(() => {
             splash.remove();
-        }, 600);
+        }, 800);
 
     }, 1500);
 
