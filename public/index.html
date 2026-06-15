@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 
@@ -24,9 +23,9 @@
 <h1>AD Barber Studio Perros</h1>
 
 <nav>
-
-<a href="/reservation.html">Réserver</a> <a href="/client.html">Planning</a> <a href="/admin.html">Admin</a>
-
+<a href="/reservation.html">Réserver</a>
+<a href="/client.html">Planning</a>
+<a href="/admin.html">Admin</a>
 </nav>
 
 </header>
@@ -45,12 +44,60 @@ Réserver un rendez-vous
 
 </section>
 
+<section class="gallery">
+
+<h2>Avant / Après</h2>
+
+<div class="gallery-grid">
+
+<div class="before-after">
+
+<img src="/images/apres1.jpg" alt="Après">
+
+<div class="before-image">
+<img src="/images/avant1.jpg" alt="Avant">
+</div>
+
+<input type="range" min="0" max="100" value="50" class="slider">
+
+</div>
+
+<div class="before-after">
+
+<img src="/images/apres2.jpg" alt="Après">
+
+<div class="before-image">
+<img src="/images/avant2.jpg" alt="Avant">
+</div>
+
+<input type="range" min="0" max="100" value="50" class="slider">
+
+</div>
+
+</div>
+
+</section>
+
 <footer>
 
 <p>AD Barber Studio Perros</p>
 
 </footer>
-<img src="images/brb1.webp" alt="photo coupe avant"/>
+
+<script>
+
+document.querySelectorAll('.before-after').forEach(container => {
+
+const slider = container.querySelector('.slider');
+const before = container.querySelector('.before-image');
+
+slider.addEventListener('input', () => {
+before.style.width = slider.value + '%';
+});
+
+});
+
+</script>
 
 </body>
 </html>
