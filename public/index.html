@@ -6,29 +6,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AD Barber Studio Perros</title>
+
 <!-- Favicon -->
 <link rel="icon" href="/icons/icon-192.png">
 
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#050505">
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
 
+<!-- CSS -->
 <link rel="stylesheet" href="/css/style.css">
-
-<!-- PWA -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#000000">
 
 </head>
 
 <body>
+
+<!-- SPLASH -->
 <div id="splash">
     AD BARBER STUDIO
 </div>
+
 <header class="header">
 
 <h1>AD Barber Studio Perros</h1>
@@ -39,7 +41,7 @@
 <a href="/admin.html">Admin</a>
 </nav>
 
-<!-- 🔥 BOUTON INSTALL PWA -->
+<!-- INSTALL BUTTON -->
 <button id="installBtn" class="btn-install" style="display:none;">
 📱 Installer l’app
 </button>
@@ -60,7 +62,7 @@ Réserver un rendez-vous
 
 <section class="gallery">
 
-<h2>Gallerie</h2>
+<h2>Galerie</h2>
 
 <div class="slider-container">
 
@@ -77,41 +79,39 @@ Réserver un rendez-vous
 <p>AD Barber Studio Perros</p>
 </footer>
 
+<!-- SLIDES -->
 <script>
-
 const slides = document.querySelectorAll('.slide');
 let current = 0;
 
+if (slides.length > 0) {
 setInterval(() => {
 
 slides[current].classList.remove('active');
 
 current++;
 
-if(current >= slides.length){
+if (current >= slides.length) {
 current = 0;
 }
 
 slides[current].classList.add('active');
 
 }, 5000);
+}
+</script>
 
-
-/* =========================
-   PWA INSTALL BUTTON
-========================= */
-
+<!-- PWA INSTALL -->
+<script>
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
 
-// Android / Chrome
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
   installBtn.style.display = "inline-block";
 });
 
-// clic installer
 installBtn.addEventListener("click", async () => {
   if (!deferredPrompt) return;
 
@@ -127,25 +127,28 @@ const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
 
 if (isIOS) {
   installBtn.style.display = "inline-block";
-  installBtn.textContent = "Faire partit du club";
+  installBtn.textContent = "Ajouter à l’écran d’accueil";
 
   installBtn.addEventListener("click", () => {
-    alert("Appuie sur Partager → Ajouter à l’écran d’accueil 📲");
+    alert("Partager → Ajouter à l’écran d’accueil 📲");
   });
 }
-
 </script>
+
+<!-- SERVICE WORKER -->
 <script>
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js');
 }
 </script>
+
+<!-- SPLASH -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
     const splash = document.getElementById("splash");
 
-    console.log("Splash chargé :", splash); // debug
+    if (!splash) return;
 
     setTimeout(() => {
         splash.classList.add("hide");
@@ -158,5 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+
 </body>
 </html>

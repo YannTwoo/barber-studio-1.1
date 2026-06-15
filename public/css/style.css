@@ -13,6 +13,8 @@ display:flex;
 flex-direction:column;
 }
 
+/* HEADER */
+
 .header{
 display:flex;
 justify-content:space-between;
@@ -41,6 +43,8 @@ opacity:1;
 text-shadow:0 0 8px white;
 }
 
+/* HERO */
+
 .hero{
 flex:1;
 display:flex;
@@ -62,6 +66,8 @@ opacity:0.8;
 margin-bottom:30px;
 }
 
+/* BUTTON */
+
 .btn{
 padding:14px 28px;
 border:1px solid white;
@@ -77,6 +83,27 @@ background:white;
 color:black;
 box-shadow:0 0 15px white;
 }
+
+/* INSTALL BUTTON */
+
+.btn-install {
+margin-left:15px;
+padding:8px 14px;
+border:none;
+border-radius:10px;
+background:#fff;
+color:#000;
+font-family:'Orbitron',sans-serif;
+cursor:pointer;
+transition:0.2s;
+}
+
+.btn-install:hover {
+background:#ddd;
+transform:scale(1.05);
+}
+
+/* FOOTER */
 
 footer{
 text-align:center;
@@ -178,42 +205,6 @@ transition:opacity 1s ease;
 opacity:1;
 }
 
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-.header{
-flex-direction:column;
-gap:10px;
-}
-
-nav a{
-margin:0 10px;
-}
-
-.hero h2{
-font-size:30px;
-}
-
-.slider-container{
-height:350px;
-}
-.btn-install {
-  margin-left: 15px;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 10px;
-  background: #fff;
-  color: #000;
-  font-family: Orbitron;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.btn-install:hover {
-  background: #ddd;
-  transform: scale(1.05);
-}
 /* SPLASH SCREEN */
 
 #splash{
@@ -237,5 +228,26 @@ transition:opacity 0.8s ease;
 #splash.hide{
 opacity:0;
 pointer-events:none;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.header{
+flex-direction:column;
+gap:10px;
+}
+
+nav a{
+margin:0 10px;
+}
+
+.hero h2{
+font-size:30px;
+}
+
+.slider-container{
+height:350px;
 }
 }
