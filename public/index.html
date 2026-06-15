@@ -14,16 +14,11 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
-<!-- PWA -->
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#000000">
-
 </head>
 
 <body>
 
 <header class="header">
-
 <h1>AD Barber Studio Perros</h1>
 
 <nav>
@@ -31,36 +26,28 @@
 <a href="/client.html">Planning</a>
 <a href="/admin.html">Admin</a>
 </nav>
-
-<!-- 🔥 BOUTON INSTALL PWA -->
-<button id="installBtn" class="btn-install" style="display:none;">
-📱 Installer l’app
-</button>
-
 </header>
 
 <section class="hero">
-
 <h2>Barber Shop</h2>
-
 <p>Réservez votre coupe en quelques secondes.</p>
 
 <a class="btn" href="/reservation.html">
 Réserver un rendez-vous
 </a>
-
 </section>
 
+<!-- GALERIE SLIDER AUTO -->
 <section class="gallery">
 
-<h2>Gallerie</h2>
+<h2>Nos Réalisations</h2>
 
 <div class="slider-container">
 
-<img src="/images/coupe1.jpg" class="slide active" alt="Coupe 1">
-<img src="/images/coupe2.jpg" class="slide" alt="Coupe 2">
-<img src="/images/coupe3.jpg" class="slide" alt="Coupe 3">
-<img src="/images/coupe4.jpg" class="slide" alt="Coupe 4">
+<img src="/images/coupe1.jpg" class="slide active">
+<img src="/images/coupe2.jpg" class="slide">
+<img src="/images/coupe3.jpg" class="slide">
+<img src="/images/coupe4.jpg" class="slide">
 
 </div>
 
@@ -71,62 +58,16 @@ Réserver un rendez-vous
 </footer>
 
 <script>
-
-const slides = document.querySelectorAll('.slide');
-let current = 0;
+const slides = document.querySelectorAll(".slide");
+let index = 0;
 
 setInterval(() => {
+  slides[index].classList.remove("active");
 
-slides[current].classList.remove('active');
+  index = (index + 1) % slides.length;
 
-current++;
-
-if(current >= slides.length){
-current = 0;
-}
-
-slides[current].classList.add('active');
-
-}, 5000);
-
-
-/* =========================
-   PWA INSTALL BUTTON
-========================= */
-
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
-
-// Android / Chrome
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  installBtn.style.display = "inline-block";
-});
-
-// clic installer
-installBtn.addEventListener("click", async () => {
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
-
-  deferredPrompt = null;
-  installBtn.style.display = "none";
-});
-
-// iOS fallback
-const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-
-if (isIOS) {
-  installBtn.style.display = "inline-block";
-  installBtn.textContent = "📲 Ajouter à l’écran d’accueil";
-
-  installBtn.addEventListener("click", () => {
-    alert("Appuie sur Partager → Ajouter à l’écran d’accueil 📲");
-  });
-}
-
+  slides[index].classList.add("active");
+}, 3000);
 </script>
 
 </body>
