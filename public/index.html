@@ -38,9 +38,9 @@
 <a href="/admin.html">Admin</a>
 </nav>
 
-<!-- BOUTON INSTALL PWA -->
-<button id="installBtn" class="btn">
-📱 Ajouter à l’écran d’accueil
+<!-- INSTALL BUTTON -->
+<button id="installBtn" class="btn" style="display:none;">
+Rejoindre le Club
 </button>
 
 </header>
@@ -76,6 +76,7 @@ Réserver un rendez-vous
 <p>AD Barber Studio Perros</p>
 </footer>
 
+<!-- SLIDER -->
 <script>
 const slides = document.querySelectorAll('.slide');
 let current = 0;
@@ -95,31 +96,53 @@ slides[current].classList.add('active');
 }
 </script>
 
+<!-- PWA INSTALL (FIXED) -->
 <script>
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
 
+// Chrome / Android
 window.addEventListener("beforeinstallprompt", (e) => {
   e.preventDefault();
   deferredPrompt = e;
+
   installBtn.style.display = "inline-block";
 });
 
+// clic bouton install
 installBtn.addEventListener("click", async () => {
-  if (!deferredPrompt) return;
+  if (!deferredPrompt) {
+    alert("Installation non disponible ici. Utilise Chrome mobile.");
+    return;
+  }
 
   deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
+  const choice = await deferredPrompt.userChoice;
 
   deferredPrompt = null;
   installBtn.style.display = "none";
 });
+
+// iOS fallback (manuel)
+const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+
+if (isIOS) {
+  installBtn.style.display = "inline-block";
+  installBtn.textContent = "Rejoindre le Club";
+
+  installBtn.addEventListener("click", () => {
+    alert("Safari → Partager → Ajouter à l’écran d’accueil 📲");
+  });
+}
 </script>
 
+<!-- SPLASH -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
     const splash = document.getElementById("splash");
+
+    if (!splash) return;
 
     setTimeout(() => {
         splash.classList.add("hide");
