@@ -25,9 +25,10 @@ border-bottom:1px solid rgba(255,255,255,0.15);
 
 .header h1{
 font-size:22px;
-font-weight:600;
 letter-spacing:2px;
 }
+
+/* NAV */
 
 nav a{
 color:white;
@@ -41,6 +42,28 @@ transition:0.2s;
 nav a:hover{
 opacity:1;
 text-shadow:0 0 8px white;
+}
+
+/* BUTTON STYLE (commun) */
+
+.btn{
+padding:12px 20px;
+border:1px solid white;
+background:transparent;
+color:white;
+font-family:'Orbitron',sans-serif;
+font-size:14px;
+letter-spacing:1px;
+cursor:pointer;
+transition:0.25s;
+text-decoration:none;
+display:inline-block;
+}
+
+.btn:hover{
+background:white;
+color:black;
+box-shadow:0 0 15px white;
 }
 
 /* HERO */
@@ -64,105 +87,6 @@ text-shadow:0 0 12px rgba(255,255,255,0.7);
 .hero p{
 opacity:0.8;
 margin-bottom:30px;
-}
-
-/* BUTTON */
-
-.btn{
-padding:14px 28px;
-border:1px solid white;
-color:white;
-text-decoration:none;
-font-size:14px;
-letter-spacing:1px;
-transition:0.25s;
-}
-
-.btn:hover{
-background:white;
-color:black;
-box-shadow:0 0 15px white;
-}
-
-/* INSTALL BUTTON */
-
-.btn-install {
-margin-left:15px;
-padding:8px 14px;
-border:none;
-border-radius:10px;
-background:#fff;
-color:#000;
-font-family:'Orbitron',sans-serif;
-cursor:pointer;
-transition:0.2s;
-}
-
-.btn-install:hover {
-background:#ddd;
-transform:scale(1.05);
-}
-
-/* FOOTER */
-
-footer{
-text-align:center;
-padding:20px;
-border-top:1px solid rgba(255,255,255,0.15);
-font-size:12px;
-opacity:0.6;
-}
-
-/* FORMULAIRES */
-
-.container{
-max-width:500px;
-margin:auto;
-padding:40px 20px;
-}
-
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input,
-select{
-padding:12px;
-background:#0b0b0b;
-border:1px solid rgba(255,255,255,0.2);
-color:white;
-font-family:'Orbitron',sans-serif;
-}
-
-button{
-padding:14px;
-border:1px solid white;
-background:transparent;
-color:white;
-font-family:'Orbitron',sans-serif;
-cursor:pointer;
-transition:0.25s;
-}
-
-button:hover{
-background:white;
-color:black;
-box-shadow:0 0 15px white;
-}
-
-.table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-.table th,
-.table td{
-padding:12px;
-border-bottom:1px solid rgba(255,255,255,0.1);
-text-align:center;
 }
 
 /* GALERIE */
@@ -205,28 +129,59 @@ transition:opacity 1s ease;
 opacity:1;
 }
 
-/* SPLASH SCREEN */
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+border-top:1px solid rgba(255,255,255,0.15);
+font-size:12px;
+opacity:0.6;
+}
+
+/* SPLASH NEON */
 
 #splash{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:#050505;
-color:white;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:32px;
-letter-spacing:3px;
 z-index:999999;
+}
+
+#splash .logo{
+font-size:34px;
+letter-spacing:6px;
+color:#fff;
+text-transform:uppercase;
+animation: neon 1.6s ease-in-out infinite;
+}
+
+@keyframes neon{
+0%,100%{
+text-shadow:
+0 0 3px #fff,
+0 0 10px #fff,
+0 0 20px rgba(255,255,255,0.5);
+transform:scale(0.98);
+opacity:0.7;
+}
+
+50%{
+text-shadow:
+0 0 5px #fff,
+0 0 20px #fff,
+0 0 40px rgba(255,255,255,0.9);
+transform:scale(1.02);
 opacity:1;
-transition:opacity 0.8s ease;
+}
 }
 
 #splash.hide{
 opacity:0;
+transition:0.6s ease;
 pointer-events:none;
 }
 
