@@ -198,5 +198,20 @@ font-size:30px;
 .slider-container{
 height:350px;
 }
+.btn-install {
+  margin-left: 15px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  color: #000;
+  font-family: Orbitron;
+  cursor: pointer;
+  transition: 0.2s;
+}
 
+.btn-install:hover {
+  background: #ddd;
+  transform: scale(1.05);
+}
 }

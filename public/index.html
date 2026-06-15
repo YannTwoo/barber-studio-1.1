@@ -14,6 +14,10 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#000000">
+
 </head>
 
 <body>
@@ -27,6 +31,11 @@
 <a href="/client.html">Planning</a>
 <a href="/admin.html">Admin</a>
 </nav>
+
+<!-- 🔥 BOUTON INSTALL PWA -->
+<button id="installBtn" class="btn-install" style="display:none;">
+📱 Installer l’app
+</button>
 
 </header>
 
@@ -79,6 +88,44 @@ current = 0;
 slides[current].classList.add('active');
 
 }, 5000);
+
+
+/* =========================
+   PWA INSTALL BUTTON
+========================= */
+
+let deferredPrompt;
+const installBtn = document.getElementById("installBtn");
+
+// Android / Chrome
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = "inline-block";
+});
+
+// clic installer
+installBtn.addEventListener("click", async () => {
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+
+  deferredPrompt = null;
+  installBtn.style.display = "none";
+});
+
+// iOS fallback
+const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
+
+if (isIOS) {
+  installBtn.style.display = "inline-block";
+  installBtn.textContent = "📲 Ajouter à l’écran d’accueil";
+
+  installBtn.addEventListener("click", () => {
+    alert("Appuie sur Partager → Ajouter à l’écran d’accueil 📲");
+  });
+}
 
 </script>
 
