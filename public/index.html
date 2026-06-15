@@ -44,33 +44,14 @@ Réserver un rendez-vous
 
 <section class="gallery">
 
-<h2>Avant / Après</h2>
+<h2>Nos Réalisations</h2>
 
-<div class="gallery-grid">
+<div class="slider-container">
 
-<div class="comparison">
-
-<img src="/images/apres1.jpg" alt="Après" class="after">
-
-<div class="before-wrapper">
-<img src="/images/avant1.jpg" alt="Avant" class="before">
-</div>
-
-<input type="range" min="0" max="100" value="50" class="slider">
-
-</div>
-
-<div class="comparison">
-
-<img src="/images/apres2.jpg" alt="Après" class="after">
-
-<div class="before-wrapper">
-<img src="/images/avant2.jpg" alt="Avant" class="before">
-</div>
-
-<input type="range" min="0" max="100" value="50" class="slider">
-
-</div>
+<img src="/images/coupe1.jpg" class="slide active" alt="Coupe 1">
+<img src="/images/coupe2.jpg" class="slide" alt="Coupe 2">
+<img src="/images/coupe3.jpg" class="slide" alt="Coupe 3">
+<img src="/images/coupe4.jpg" class="slide" alt="Coupe 4">
 
 </div>
 
@@ -82,16 +63,22 @@ Réserver un rendez-vous
 
 <script>
 
-document.querySelectorAll('.comparison').forEach((comparison) => {
+const slides = document.querySelectorAll('.slide');
+let current = 0;
 
-const slider = comparison.querySelector('.slider');
-const beforeWrapper = comparison.querySelector('.before-wrapper');
+setInterval(() => {
 
-slider.addEventListener('input', () => {
-beforeWrapper.style.width = slider.value + '%';
-});
+slides[current].classList.remove('active');
 
-});
+current++;
+
+if(current >= slides.length){
+current = 0;
+}
+
+slides[current].classList.add('active');
+
+}, 3000);
 
 </script>
 
