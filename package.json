@@ -1,15 +1,1 @@
-{
-"name": "ad-barber-studio-perros",
-"version": "1.0.0",
-"description": "Site de reservation pour AD Barber Studio Perros",
-"main": "serveur.js",
-"scripts": {
-"start": "node serveur.js"
-},
-"dependencies": {
-"@supabase/supabase-js": "^2.39.7",
-"express": "^4.19.2",
-"dotenv": "^16.4.5",
-"cors": "^2.8.5"
-}
-}
+{"name":"ad-barber-studio-perros","version":"1.0.0","description":"Site de reservation pour AD Barber Studio Perros","main":"serveur.js","scripts":{"start":"node serveur.js"},"dependencies":{"@capacitor/android":"^8.4.0","@capacitor/cli":"^8.4.0","@capacitor/core":"^8.4.0","@capacitor/ios":"^8.4.0","@supabase/supabase-js":"^2.39.7","cors":"^2.8.5","dotenv":"^16.4.5","express":"^4.19.2"}}

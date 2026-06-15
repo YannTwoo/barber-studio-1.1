@@ -1,87 +1,114 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barber Studio</title>
 
-<title>AD Barber Studio Perros</title>
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#000000">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#000000">
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+  <!-- iPhone support -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="/icon-192.png">
 
-<link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: white;
+      text-align: center;
+    }
 
+    header {
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.7;
+    }
+
+    #installBtn {
+      display: none;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #ffffff;
+      color: #000;
+      cursor: pointer;
+    }
+
+    #installBtn:hover {
+      background: #ddd;
+    }
+
+    .card {
+      margin: 30px auto;
+      max-width: 400px;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 15px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header class="header">
+  <header>
+    <h1>💈 Barber Studio</h1>
+    <p>Réserve ton rendez-vous en un clic</p>
 
-<h1>AD Barber Studio Perros</h1>
+    <button id="installBtn">📱 Installer l'application</button>
+  </header>
 
-<nav>
-<a href="/reservation.html">Réserver</a>
-<a href="/client.html">Planning</a>
-<a href="/admin.html">Admin</a>
-</nav>
+  <div class="card">
+    <h2>Bienvenue 👋</h2>
+    <p>Accède à tous les services du salon directement depuis ton application.</p>
+  </div>
 
-</header>
+  <script>
+    let deferredPrompt;
+    const installBtn = document.getElementById("installBtn");
 
-<section class="hero">
+    // Détecte si installable
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = "inline-block";
+    });
 
-<h2>Barber Shop</h2>
+    // Clic sur installer
+    installBtn.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
 
-<p>Réservez votre coupe en quelques secondes.</p>
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installBtn.style.display = "none";
+    });
 
-<a class="btn" href="/reservation.html">
-Réserver un rendez-vous
-</a>
+    // iOS fallback (Apple ne déclenche pas beforeinstallprompt)
+    const isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
 
-</section>
-
-<section class="gallery">
-
-<h2>Gallerie</h2>
-
-<div class="slider-container">
-
-<img src="/images/coupe1.jpg" class="slide active" alt="Coupe 1">
-<img src="/images/coupe2.jpg" class="slide" alt="Coupe 2">
-<img src="/images/coupe3.jpg" class="slide" alt="Coupe 3">
-<img src="/images/coupe4.jpg" class="slide" alt="Coupe 4">
-
-</div>
-
-</section>
-
-<footer>
-<p>AD Barber Studio Perros</p>
-</footer>
-
-<script>
-
-const slides = document.querySelectorAll('.slide');
-let current = 0;
-
-setInterval(() => {
-
-slides[current].classList.remove('active');
-
-current++;
-
-if(current >= slides.length){
-current = 0;
-}
-
-slides[current].classList.add('active');
-
-}, 5000);
-
-</script>
+    if (isIOS) {
+      installBtn.style.display = "inline-block";
+      installBtn.innerText = "📲 Ajouter à l'écran d'accueil";
+      installBtn.onclick = () => {
+        alert("Appuie sur Partager → Ajouter à l'écran d'accueil");
+      };
+    }
+  </script>
 
 </body>
 </html>
