@@ -34,9 +34,7 @@
 
 <h2>Barber Shop</h2>
 
-<p>
-Réservez votre coupe en quelques secondes.
-</p>
+<p>Réservez votre coupe en quelques secondes.</p>
 
 <a class="btn" href="/reservation.html">
 Réserver un rendez-vous
@@ -50,24 +48,24 @@ Réserver un rendez-vous
 
 <div class="gallery-grid">
 
-<div class="before-after">
+<div class="comparison">
 
-<img src="/images/apres1.jpg" alt="Après">
+<img src="/images/apres1.jpg" alt="Après" class="after">
 
-<div class="before-image">
-<img src="/images/avant1.jpg" alt="Avant">
+<div class="before-wrapper">
+<img src="/images/avant1.jpg" alt="Avant" class="before">
 </div>
 
 <input type="range" min="0" max="100" value="50" class="slider">
 
 </div>
 
-<div class="before-after">
+<div class="comparison">
 
-<img src="/images/apres2.jpg" alt="Après">
+<img src="/images/apres2.jpg" alt="Après" class="after">
 
-<div class="before-image">
-<img src="/images/avant2.jpg" alt="Avant">
+<div class="before-wrapper">
+<img src="/images/avant2.jpg" alt="Avant" class="before">
 </div>
 
 <input type="range" min="0" max="100" value="50" class="slider">
@@ -79,20 +77,18 @@ Réserver un rendez-vous
 </section>
 
 <footer>
-
 <p>AD Barber Studio Perros</p>
-
 </footer>
 
 <script>
 
-document.querySelectorAll('.before-after').forEach(container => {
+document.querySelectorAll('.comparison').forEach((comparison) => {
 
-const slider = container.querySelector('.slider');
-const before = container.querySelector('.before-image');
+const slider = comparison.querySelector('.slider');
+const beforeWrapper = comparison.querySelector('.before-wrapper');
 
 slider.addEventListener('input', () => {
-before.style.width = slider.value + '%';
+beforeWrapper.style.width = slider.value + '%';
 });
 
 });
