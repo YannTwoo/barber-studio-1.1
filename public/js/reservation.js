@@ -28,7 +28,7 @@ selectService.addEventListener("change", ()=>{
 // Générer les 7 prochains jours
 function generateDates(){
   const today = new Date()
-  for(let i=0;i<7;i++){
+  for(let i=0;i<14;i++){
     const d = new Date()
     d.setDate(today.getDate()+i)
     const value = d.toISOString().split("T")[0]
