@@ -23,136 +23,112 @@
 
 <body>
 
-<!-- SPLASH -->
 <div id="splash">
     <div class="logo">AD BARBER STUDIO</div>
 </div>
 
 <header class="header">
 
-<h1>AD Barber Studio Perros</h1>
+    <h1>AD Barber Studio</h1>
 
-<nav>
-<a href="/reservation.html">Réserver</a>
-<a href="/client.html">Planning</a>
-<a href="/admin.html">Admin</a>
-</nav>
+    <nav>
+        <a href="/reservation.html">Réserver</a>
+        <a href="/client.html">Planning</a>
+        <a href="/admin.html">Admin</a>
+    </nav>
 
-<!-- INSTALL BUTTON -->
-<button id="installBtn" class="btn" style="display:none;">
-Rejoindre le Club
-</button>
+    <button id="installBtn" class="btn" style="display:none;">
+        Rejoindre le Club
+    </button>
 
 </header>
 
 <section class="hero">
 
-<h2>Barber Shop</h2>
+    <span class="hero-subtitle">
+        BARBER STUDIO • PERROS-GUIREC
+    </span>
 
-<p>Réservez votre coupe en quelques secondes.</p>
+    <h2>
+        Une expérience de coiffure moderne.
+    </h2>
 
-<a class="btn" href="/reservation.html">
-Réserver un rendez-vous
-</a>
+    <p>
+        Réservez votre rendez-vous en quelques secondes et consultez
+        les disponibilités en temps réel.
+    </p>
+
+    <div class="hero-buttons">
+
+        <a class="btn" href="/reservation.html">
+            Réserver
+        </a>
+
+    </div>
 
 </section>
 
 <section class="gallery">
 
-<h2>Galerie</h2>
+    <div class="section-title">
+        Galerie
+    </div>
 
-<div class="slider-container">
+    <div class="gallery-track">
 
-<img src="/images/coupe1.jpg" class="slide active" alt="Coupe 1">
-<img src="/images/coupe2.jpg" class="slide" alt="Coupe 2">
-<img src="/images/coupe3.jpg" class="slide" alt="Coupe 3">
-<img src="/images/coupe4.jpg" class="slide" alt="Coupe 4">
+        <img src="/images/coupe1.jpg" alt="">
+        <img src="/images/coupe2.jpg" alt="">
+        <img src="/images/coupe3.jpg" alt="">
+        <img src="/images/coupe4.jpg" alt="">
 
-</div>
+        <img src="/images/coupe1.jpg" alt="">
+        <img src="/images/coupe2.jpg" alt="">
+        <img src="/images/coupe3.jpg" alt="">
+        <img src="/images/coupe4.jpg" alt="">
+
+    </div>
+
+</section>
+
+<section class="presentation">
+
+    <div class="card">
+
+        <h3>Précision</h3>
+
+        <p>
+            Chaque coupe est réalisée avec soin et souci du détail.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Réservation rapide</h3>
+
+        <p>
+            Choisissez votre créneau en quelques clics.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Planning en direct</h3>
+
+        <p>
+            Les disponibilités sont mises à jour automatiquement.
+        </p>
+
+    </div>
 
 </section>
 
 <footer>
-<p>AD Barber Studio Perros</p>
+
+    <p>© AD Barber Studio Perros</p>
+
 </footer>
 
-<!-- SLIDER -->
-<script>
-const slides = document.querySelectorAll('.slide');
-let current = 0;
-
-if (slides.length > 0) {
-setInterval(() => {
-
-slides[current].classList.remove('active');
-
-current++;
-
-if (current >= slides.length) current = 0;
-
-slides[current].classList.add('active');
-
-}, 5000);
-}
-</script>
-
-<!-- PWA INSTALL (FIXED) -->
-<script>
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
-
-// Chrome / Android
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-
-  installBtn.style.display = "inline-block";
-});
-
-// clic bouton install
-installBtn.addEventListener("click", async () => {
-  if (!deferredPrompt) {
-    alert("Installation non disponible ici. Utilise Chrome mobile.");
-    return;
-  }
-
-  deferredPrompt.prompt();
-  const choice = await deferredPrompt.userChoice;
-
-  deferredPrompt = null;
-  installBtn.style.display = "none";
-});
-
-// iOS fallback (manuel)
-const isIOS = /iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-
-if (isIOS) {
-  installBtn.style.display = "inline-block";
-  installBtn.textContent = "Rejoindre le Club";
-
-  installBtn.addEventListener("click", () => {
-    alert("Safari → Partager → Ajouter à l’écran d’accueil 📲");
-  });
-}
-</script>
-
-<!-- SPLASH -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    const splash = document.getElementById("splash");
-
-    if (!splash) return;
-
-    setTimeout(() => {
-        splash.classList.add("hide");
-
-        setTimeout(() => splash.remove(), 600);
-
-    }, 1600);
-
-});
-</script>
-
-</body>
+<!-- Conserve TOUS tes scripts actuels juste en dessous -->
 </html>
