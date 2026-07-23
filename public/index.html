@@ -13,13 +13,27 @@ AD Barber Studio Perros
 </title>
 
 
+<!-- Icône classique -->
 <link rel="icon" href="/icons/icon-192.png">
 
 
+<!-- PWA Android -->
 <link rel="manifest" href="/manifest.json">
 
 
 <meta name="theme-color" content="#050505">
+
+
+<!-- iPhone / iOS PWA -->
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+<meta name="apple-mobile-web-app-title" content="AD Barber Studio">
+
+
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
 
 
 
@@ -30,6 +44,7 @@ AD Barber Studio Perros
 
 
 </head>
+
 
 
 
@@ -51,11 +66,14 @@ AD BARBER STUDIO
 
 
 
+
 <header class="header">
 
 
 <h1>
+
 AD Barber Studio
+
 </h1>
 
 
@@ -63,17 +81,23 @@ AD Barber Studio
 <nav>
 
 <a href="/">
+
 Accueil
+
 </a>
 
 
 <a href="/reservation.html">
+
 Réserver
+
 </a>
 
 
 <a href="/client.html">
+
 Planning
+
 </a>
 
 
@@ -82,7 +106,8 @@ Planning
 
 
 
-<button id="installBtn" class="btn" style="display:none">
+
+<button id="installBtn" class="btn" style="display:none;">
 
 Rejoindre le Club
 
@@ -98,11 +123,14 @@ Rejoindre le Club
 
 
 
+
+
 <main>
 
 
 
 <section class="hero">
+
 
 
 <div class="hero-subtitle">
@@ -125,14 +153,11 @@ Une expérience de coiffure moderne.
 
 <p>
 
-Des coupes précises, une réservation simple et un suivi en temps réel de vos disponibilités.
+Réservez votre rendez-vous simplement et retrouvez votre planning en temps réel.
 
 </p>
 
 
-
-
-<br>
 
 
 <a href="/reservation.html" class="btn">
@@ -151,8 +176,9 @@ Réserver
 
 
 
-<section class="gallery">
 
+
+<section class="gallery">
 
 
 <div class="hero-subtitle">
@@ -163,10 +189,10 @@ GALERIE
 
 
 
+
 <div class="gallery-track">
 
 
-
 <img src="/images/coupe1.jpg" alt="">
 
 <img src="/images/coupe2.jpg" alt="">
@@ -176,7 +202,6 @@ GALERIE
 <img src="/images/coupe4.jpg" alt="">
 
 
-
 <img src="/images/coupe1.jpg" alt="">
 
 <img src="/images/coupe2.jpg" alt="">
@@ -184,14 +209,13 @@ GALERIE
 <img src="/images/coupe3.jpg" alt="">
 
 <img src="/images/coupe4.jpg" alt="">
-
 
 
 </div>
 
 
-
 </section>
+
 
 
 
@@ -205,6 +229,7 @@ GALERIE
 
 <div class="card">
 
+
 <h3>
 
 Précision
@@ -214,9 +239,10 @@ Précision
 
 <p>
 
-Chaque coupe est réalisée avec attention et souci du détail.
+Des coupes réalisées avec soin et précision.
 
 </p>
+
 
 </div>
 
@@ -224,20 +250,23 @@ Chaque coupe est réalisée avec attention et souci du détail.
 
 
 
+
 <div class="card">
+
 
 <h3>
 
-Réservation rapide
+Réservation
 
 </h3>
 
 
 <p>
 
-Choisissez votre créneau en quelques secondes.
+Choisissez votre créneau directement en ligne.
 
 </p>
+
 
 </div>
 
@@ -245,20 +274,23 @@ Choisissez votre créneau en quelques secondes.
 
 
 
+
 <div class="card">
+
 
 <h3>
 
-Planning en direct
+Application
 
 </h3>
 
 
 <p>
 
-Consultez les disponibilités facilement.
+Ajoutez AD Barber Studio à votre écran d'accueil.
 
 </p>
+
 
 </div>
 
@@ -268,7 +300,11 @@ Consultez les disponibilités facilement.
 
 
 
+
+
+
 </main>
+
 
 
 
@@ -294,13 +330,18 @@ Consultez les disponibilités facilement.
 
 
 
+
+
 <script src="/js/app.js"></script>
+
 
 
 
 
 <script>
 
+
+// Splash écran
 
 window.addEventListener("load",()=>{
 
@@ -313,9 +354,7 @@ if(splash){
 
 setTimeout(()=>{
 
-
 splash.classList.add("hide");
-
 
 },700);
 
@@ -323,8 +362,106 @@ splash.classList.add("hide");
 }
 
 
+});
+
+
+
+
+
+// Installation Android Chrome / Samsung Internet
+
+
+let deferredPrompt;
+
+
+const installBtn=document.getElementById("installBtn");
+
+
+
+window.addEventListener("beforeinstallprompt",(e)=>{
+
+
+e.preventDefault();
+
+
+deferredPrompt=e;
+
+
+if(installBtn){
+
+
+installBtn.style.display="inline-flex";
+
+
+}
+
+
 
 });
+
+
+
+
+
+if(installBtn){
+
+
+installBtn.addEventListener("click",async()=>{
+
+
+if(!deferredPrompt){
+
+return;
+
+}
+
+
+
+deferredPrompt.prompt();
+
+
+
+const result=await deferredPrompt.userChoice;
+
+
+
+deferredPrompt=null;
+
+
+
+installBtn.style.display="none";
+
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+// Service Worker PWA
+
+
+if("serviceWorker" in navigator){
+
+
+window.addEventListener("load",()=>{
+
+
+navigator.serviceWorker.register("/sw.js")
+
+.catch(err=>console.log(err));
+
+
+});
+
+
+}
 
 
 
