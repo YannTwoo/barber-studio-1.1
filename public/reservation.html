@@ -2,62 +2,297 @@
 <html lang="fr">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Réservation | AD Barber Studio Perros</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/icons/icon-192.png">
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#050505">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="/css/style.css">
+
 </head>
+
 
 <body>
 
+
 <header class="header">
-<h1>AD Barber Studio Perros</h1>
+
+<h1>AD Barber Studio</h1>
+
 <nav>
 <a href="/">Accueil</a>
 <a href="/client.html">Planning</a>
 </nav>
+
+<button id="installBtn" class="btn" style="display:none;">
+Rejoindre le Club
+</button>
+
 </header>
 
-<div class="container">
 
-<h2>Réserver un rendez-vous</h2>
+
+<main class="reservation-page">
+
+
+<section class="reservation-card">
+
+
+<span class="hero-subtitle">
+RÉSERVATION
+</span>
+
+
+<h2>
+Prendre rendez-vous
+</h2>
+
+
+<p class="reservation-description">
+Choisissez votre prestation, votre date et votre horaire.
+</p>
+
+
 
 <form id="reservationForm">
 
-<input type="text" id="nom" placeholder="Nom" required>
-<input type="text" id="coupe" placeholder="Nom de la coupe souhaitée" required>
 
-<select id="date" required></select>
 
-<select id="heure" required>
-<option value="">Choisir un horaire</option>
-<option value="10:30">10:30</option>
-<option value="11:00">11:15</option>
-<option value="11:30">12:00</option>
-<option value="12:00">12:45</option>
-<option value="12:00">13:30</option>
-</select>
+<div class="input-group">
 
-<select id="service" required>
-<option value="">Choisir un service</option>
-<option value="Standard">Standard</option>
-<option value="+ Barbe">+ Barbe</option>
-<option value="+ Finition Ciseau">+ Finition Ciseau</option>
-<option value="+ Barbe & Finition Ciseau">+ Barbe & Finition Ciseau</option>
-</select>
+<label for="nom">
+Nom
+</label>
 
-<p id="prixService">Prix : 0€</p>
-
-<button type="submit">Réserver</button>
-
-</form>
-
-<p id="message"></p>
+<input 
+type="text" 
+id="nom" 
+placeholder="Votre nom"
+required>
 
 </div>
 
+
+
+
+<div class="input-group">
+
+<label for="coupe">
+Coupe souhaitée
+</label>
+
+<input 
+type="text" 
+id="coupe" 
+placeholder="Votre demande"
+required>
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+<label>Date</label>
+
+<div id="calendar" class="calendar"></div>
+
+<select id="date" style="display:none;"></select>
+
+</div>
+
+
+
+
+<div class="input-group">
+
+<label>
+Horaire
+</label>
+
+
+<div class="hours-grid">
+
+
+<button type="button" class="hour-btn" data-hour="10:30">
+10:30
+</button>
+
+
+<button type="button" class="hour-btn" data-hour="11:00">
+11:00
+</button>
+
+
+<button type="button" class="hour-btn" data-hour="11:30">
+11:30
+</button>
+
+
+<button type="button" class="hour-btn" data-hour="12:00">
+12:00
+</button>
+
+
+<button type="button" class="hour-btn" data-hour="12:45">
+12:45
+</button>
+
+
+<button type="button" class="hour-btn" data-hour="13:30">
+13:30
+</button>
+
+
+</div>
+
+
+<select id="heure" required style="display:none;">
+
+<option value="">
+Choisir un horaire
+</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+<div class="input-group">
+
+
+<label>
+Service
+</label>
+
+
+<select id="service" required>
+
+
+<option value="">
+Choisir un service
+</option>
+
+
+<option value="Standard">
+Standard
+</option>
+
+
+<option value="+ Barbe">
++ Barbe
+</option>
+
+
+<option value="+ Finition Ciseau">
++ Finition Ciseau
+</option>
+
+
+<option value="+ Barbe & Finition Ciseau">
++ Barbe & Finition Ciseau
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+<p id="prixService">
+Prix : 0€
+</p>
+
+
+<div class="summary">
+
+<h3>Résumé</h3>
+
+<p id="resumeDate">Date : -</p>
+
+<p id="resumeHeure">Heure : -</p>
+
+<p id="resumeService">Service : -</p>
+
+<p id="resumePrix">Prix : 0 €</p>
+
+</div>
+
+<button type="submit" class="btn reservation-btn">
+
+Réserver
+
+</button>
+
+
+
+</form>
+
+
+
+<p id="message"></p>
+
+
+</section>
+
+
+</main>
+
+
+
 <script src="/js/reservation.js"></script>
+
+
+<script>
+
+const hourButtons = document.querySelectorAll(".hour-btn");
+const hiddenHour = document.getElementById("heure");
+
+
+hourButtons.forEach(button => {
+
+
+button.addEventListener("click", () => {
+
+
+hourButtons.forEach(btn => {
+btn.classList.remove("active");
+});
+
+
+button.classList.add("active");
+
+
+hiddenHour.value = button.dataset.hour;
+
+
+});
+
+
+});
+
+
+</script>
+
+
 </body>
+
 </html>
