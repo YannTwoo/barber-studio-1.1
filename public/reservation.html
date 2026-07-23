@@ -11,79 +11,110 @@
 <link rel="icon" href="/icons/icon-192.png">
 
 <link rel="manifest" href="/manifest.json">
+
 <meta name="theme-color" content="#050505">
 
+
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
+
 
 <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
 
+
 <body>
+
+
+<div id="splash">
+
+<div class="logo">
+AD BARBER STUDIO
+</div>
+
+</div>
+
 
 
 <header class="header">
 
-<h1>AD Barber Studio</h1>
+
+<h1>
+AD Barber Studio
+</h1>
+
 
 <nav>
-<a href="/">Accueil</a>
-<a href="/client.html">Planning</a>
+
+<a href="/">
+Accueil
+</a>
+
+<a href="/client.html">
+Planning
+</a>
+
+
 </nav>
 
-<button id="installBtn" class="btn" style="display:none;">
+
+
+<button id="installBtn" class="btn">
 Rejoindre le Club
 </button>
+
 
 </header>
 
 
 
+
+
 <main class="reservation-page">
+
 
 <section class="reservation-card">
 
-<h2>
-Prendre rendez-vous
-</h2>
 
 
-<form id="reservationForm">
+<div class="hero-subtitle">
+RÉSERVATION
+</div>
 
-...
-
-</form>
-
-</section>
-
-</main>
 
 
 <h2>
 Prendre rendez-vous
 </h2>
+
 
 
 <p class="reservation-description">
-Choisissez votre prestation, votre date et votre horaire.
+
+Choisissez votre date, votre horaire et votre prestation.
+
 </p>
 
 
 
+
 <form id="reservationForm">
+
+
 
 
 
 <div class="input-group">
 
-<label for="nom">
+<label>
 Nom
 </label>
 
+
 <input 
-type="text" 
-id="nom" 
+type="text"
+id="nom"
 placeholder="Votre nom"
 required>
 
@@ -92,16 +123,18 @@ required>
 
 
 
+
 <div class="input-group">
 
-<label for="coupe">
+<label>
 Coupe souhaitée
 </label>
 
-<input 
-type="text" 
-id="coupe" 
-placeholder="Votre demande"
+
+<input
+type="text"
+id="coupe"
+placeholder="Exemple : Coupe classique"
 required>
 
 </div>
@@ -112,61 +145,119 @@ required>
 
 <div class="input-group">
 
-<label>Date</label>
+
+<label>
+Date
+</label>
+
+
 
 <div id="calendar" class="calendar"></div>
 
-<select id="date" style="display:none;"></select>
+
+
+<select id="date" required hidden>
+
+<option value="">
+Choisir une date
+</option>
+
+
+</select>
+
 
 </div>
+
+
 
 
 
 
 <div class="input-group">
 
+
 <label>
 Horaire
 </label>
 
 
+
 <div class="hours-grid">
 
 
-<button type="button" class="hour-btn" data-hour="10:30">
+
+<button 
+type="button"
+class="hour-btn"
+data-hour="10:30">
+
 10:30
+
 </button>
 
 
-<button type="button" class="hour-btn" data-hour="11:00">
+
+<button 
+type="button"
+class="hour-btn"
+data-hour="11:00">
+
 11:00
+
 </button>
 
 
-<button type="button" class="hour-btn" data-hour="11:30">
+
+<button 
+type="button"
+class="hour-btn"
+data-hour="11:30">
+
 11:30
+
 </button>
 
 
-<button type="button" class="hour-btn" data-hour="12:00">
+
+<button 
+type="button"
+class="hour-btn"
+data-hour="12:00">
+
 12:00
+
 </button>
 
 
-<button type="button" class="hour-btn" data-hour="12:45">
+
+<button 
+type="button"
+class="hour-btn"
+data-hour="12:45">
+
 12:45
+
 </button>
 
 
-<button type="button" class="hour-btn" data-hour="13:30">
+
+<button 
+type="button"
+class="hour-btn"
+data-hour="13:30">
+
 13:30
+
 </button>
+
 
 
 </div>
 
 
-<select id="heure" required style="display:none;">
+
+
+<select id="heure" required hidden>
 
 <option value="">
 Choisir un horaire
@@ -175,7 +266,10 @@ Choisir un horaire
 </select>
 
 
+
 </div>
+
+
 
 
 
@@ -187,6 +281,7 @@ Choisir un horaire
 <label>
 Service
 </label>
+
 
 
 <select id="service" required>
@@ -220,10 +315,36 @@ Standard
 </select>
 
 
+
 </div>
 
 
 
+
+
+
+
+<div class="summary">
+
+
+<h3>
+Résumé
+</h3>
+
+
+<p id="resumeDate">
+Date : -
+</p>
+
+
+<p id="resumeHeure">
+Heure : -
+</p>
+
+
+<p id="resumeService">
+Service : -
+</p>
 
 
 <p id="prixService">
@@ -231,25 +352,23 @@ Prix : 0€
 </p>
 
 
-<div class="summary">
-
-<h3>Résumé</h3>
-
-<p id="resumeDate">Date : -</p>
-
-<p id="resumeHeure">Heure : -</p>
-
-<p id="resumeService">Service : -</p>
-
-<p id="resumePrix">Prix : 0 €</p>
-
 </div>
 
-<button type="submit" class="btn reservation-btn">
+
+
+
+
+
+
+<button 
+class="reservation-btn"
+type="submit">
 
 Réserver
 
 </button>
+
+
 
 
 
@@ -260,46 +379,64 @@ Réserver
 <p id="message"></p>
 
 
+
 </section>
+
 
 
 </main>
 
 
 
+
+
+
+<footer>
+
+<p>
+© AD Barber Studio Perros
+</p>
+
+</footer>
+
+
+
+
+
+
+
 <script src="/js/reservation.js"></script>
+
 
 
 <script>
 
-const hourButtons = document.querySelectorAll(".hour-btn");
-const hiddenHour = document.getElementById("heure");
+
+window.addEventListener("load",()=>{
 
 
-hourButtons.forEach(button => {
+const splash=document.getElementById("splash");
 
 
-button.addEventListener("click", () => {
+if(splash){
 
 
-hourButtons.forEach(btn => {
-btn.classList.remove("active");
-});
+setTimeout(()=>{
+
+splash.classList.add("hide");
+
+},700);
 
 
-button.classList.add("active");
-
-
-hiddenHour.value = button.dataset.hour;
-
-
-});
+}
 
 
 });
+
 
 
 </script>
+
 
 
 </body>
