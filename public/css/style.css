@@ -922,6 +922,75 @@ nav{
 
 
 }
+/* ==========================
+   INSTALL APP BUTTON
+========================== */
 
+
+.add-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+
+padding:14px 24px;
+
+
+background:#ffffff;
+
+color:#000000;
+
+
+border:none;
+
+border-radius:999px;
+
+
+font-family:'Orbitron',sans-serif;
+
+font-size:14px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+
+cursor:pointer;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.add-btn span{
+
+font-size:22px;
+
+line-height:0;
+
+}
+
+
+
+.add-btn:hover{
+
+
+transform:translateY(-3px);
+
+
+box-shadow:
+
+0 0 30px rgba(255,255,255,.35);
+
+
+}
 
 }
