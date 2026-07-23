@@ -107,9 +107,9 @@ Planning
 
 
 
-<button id="installBtn" class="add-btn" style="display:none;">
+<button id="installBtn" class="add-btn">
 
-Rejoindre le Club
+<span>+</span> ADD
 
 </button>
 
@@ -471,7 +471,69 @@ navigator.serviceWorker.register("/sw.js")
 
 
 
+<script>
 
+let deferredPrompt;
+
+const installBtn = document.getElementById("installBtn");
+
+
+// Détection installation Android / Samsung
+
+window.addEventListener("beforeinstallprompt", (event)=>{
+
+    event.preventDefault();
+
+    deferredPrompt = event;
+
+    if(installBtn){
+
+        installBtn.style.display = "inline-flex";
+
+    }
+
+});
+
+
+
+// Clic sur + ADD
+
+if(installBtn){
+
+installBtn.addEventListener("click", async ()=>{
+
+
+    if(deferredPrompt){
+
+        deferredPrompt.prompt();
+
+
+        const choice = await deferredPrompt.userChoice;
+
+
+        deferredPrompt = null;
+
+
+    } else {
+
+
+        // iPhone
+
+        alert(
+        "Pour installer AD Barber Studio :\n\n" +
+        "1. Appuyez sur le bouton Partager\n" +
+        "2. Choisissez 'Sur l'écran d'accueil'"
+        );
+
+
+    }
+
+
+});
+
+}
+
+</script>
 </body>
 
 </html>
