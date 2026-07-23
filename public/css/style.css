@@ -832,4 +832,122 @@ margin:10px 0;
 color:#bdbdbd;
 
 }
+/* Correction textes invisibles */
+
+h1,
+h2,
+h3,
+h4,
+p,
+label,
+span,
+a {
+    color: #ffffff;
+}
+
+
+input,
+select,
+textarea {
+
+    color:white !important;
+    background:#0b0b0b !important;
+
+}
+
+
+select option {
+
+    background:#0b0b0b;
+    color:white;
+
+}
+
+
+::placeholder {
+
+    color:#888;
+
+}
+/* =====================
+   RESERVATION CLEAN V2
+===================== */
+
+
+.container,
+.reservation-page {
+
+    width:100%;
+
+}
+
+
+.reservation-card {
+
+    margin:40px auto;
+
+}
+
+
+#reservationForm {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
+}
+
+
+#reservationForm button[type="submit"] {
+
+    margin-top:30px;
+
+    background:white;
+
+    color:black;
+
+    border:none;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    font-family:Orbitron;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+#reservationForm button[type="submit"]:hover {
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,.2);
+
+}
+
+
+
+.hour-btn {
+
+    height:55px;
+
+    font-size:14px;
+
+}
+
+
+.hour-btn.locked {
+
+    background:#181818 !important;
+
+    color:#777 !important;
+
+}
 }
